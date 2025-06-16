@@ -8,7 +8,7 @@
   <div class="tags" *ngIf="tags?.length">
     <ng-container *ngFor="let tag of tags">
       <ng-container *ngIf="tagTemplate; else defaultTag">
-        <ng-container *ngTemplateOutlet="tagTemplate; context: { $implicit: tag }" />
+        <ng-container *ngTemplateOutlet="tagTemplate; context: { $implicit: tag }"></ng-container>
       </ng-container>
       <ng-template #defaultTag>
         <lib-tag

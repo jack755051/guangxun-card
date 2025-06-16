@@ -8,12 +8,12 @@ import { ArrangeType } from './models/guangxun-card.enum';
 import {CardArrangeTypeIcons} from './models/fa-icon';
 import {GuangxunCardService} from './guangxun-card.service';
 import {CardItemComponent} from './components/card-item/card-item.component';
-import {NgClass, NgIf, NgTemplateOutlet} from '@angular/common';
+import { NgClass, NgIf, NgTemplateOutlet, NgForOf } from '@angular/common';
 import {ToggleComponent} from './components/toggle/toggle.component';
 
 @Component({
   selector: 'lib-guangxun-card',
-  imports: [RouterLink, CardItemComponent, NgTemplateOutlet, NgIf, NgClass, ToggleComponent],
+  imports: [RouterLink, CardItemComponent, NgTemplateOutlet, NgIf, NgClass,NgForOf, ToggleComponent],
   standalone: true,
   templateUrl:'./guangxun-card.component.html',
   styleUrls: ['./guangxun-card.component.scss'],

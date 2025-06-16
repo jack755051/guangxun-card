@@ -13,7 +13,8 @@
     [description]="cardItem.content.description"
     [tags]="cardItem.content.tag || []"
     [arrangeType]="arrangeType"
+    (tagClick)="onTagClick($event)"
   ></lib-content>
 
-  <lib-footer [actions]="cardItem.footer.button" [arrangeType]="arrangeType"></lib-footer>
+  <lib-footer [actions]="cardItem.footer.button" [arrangeType]="arrangeType" ></lib-footer>
 </div>

@@ -27,7 +27,9 @@ export class HeaderComponent {
   }
 
   get avatarClass(): string | string[] {
-    return (this.avatar as any)?.class ?? '';
+    return this.avatar && 'class' in this.avatar
+      ? (this.avatar as { class?: string | string[] }).class ?? ''
+      : '';
   }
 
   isAvatarIcon(avatar: CardItemHeaderAvatar): avatar is CardItemHeaderFaIcon {

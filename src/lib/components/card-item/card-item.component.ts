@@ -20,6 +20,7 @@ import {NgIf} from '@angular/common';
   styleUrl: './card-item.component.scss'
 })
 export class CardItemComponent {
+  @Input() className = '';
   @Input() cardItem!: CardItem;
   private _arrangeType: ArrangeType = ArrangeType.LIST;
   @Input()
@@ -69,7 +70,7 @@ export class CardItemComponent {
   }
 
   getCardItemClass(): string {
-    return CARD_CLASS_MAP[this.arrangeType] ?? '';
+    return [CARD_CLASS_MAP[this.arrangeType], this.className].filter(Boolean).join(' ');
   }
 
   onCardClick(event: MouseEvent) {

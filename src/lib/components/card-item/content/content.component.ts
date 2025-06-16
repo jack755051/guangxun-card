@@ -2,18 +2,19 @@ import {Component, EventEmitter, HostBinding, Input, Output, TemplateRef} from '
 import {ArrangeType} from '../../../models/guangxun-card.enum';
 import {CardItemTag} from '../../../models/guangxun-card.interface';
 import {CONTENT_CLASS_MAP} from '../../../models/arrange-type-class.map';
-import {NgIf} from '@angular/common';
+import {NgIf,NgForOf} from '@angular/common';
 import {TagComponent} from '../tag/tag.component';
 
 @Component({
   selector: 'lib-content',
   imports: [
     NgIf,
+    NgForOf,
     TagComponent
   ],
   standalone: true,
   templateUrl: './content.component.html',
-  styleUrl: './content.component.scss'
+  styleUrls: ['./content.component.scss']
 })
 export class ContentComponent {
   @Input() arrangeType: ArrangeType = ArrangeType.LIST;
@@ -21,7 +22,7 @@ export class ContentComponent {
   @Input() title: string = '';
   @Input() subTitle: string = '';
   @Input() description: string = '';
-  @Input() tags: CardItemTag[] = [];
+  @Input() tags: CardItemTag[] | null = null;
   /** 額外 class，支援客製化 */
   @Input() className = '';
   @Input() tagTemplate?: TemplateRef<any>;
@@ -34,6 +35,7 @@ export class ContentComponent {
 
   @HostBinding('class')
   get hostClass(): string {
-    return CONTENT_CLASS_MAP[this.arrangeType] ?? '';
+    const baseClass = CONTENT_CLASS_MAP[this.arrangeType] ?? '';
+    return [baseClass, this.className].filter(Boolean).join(' ');
   }
 }

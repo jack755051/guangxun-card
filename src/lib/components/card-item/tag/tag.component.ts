@@ -29,7 +29,7 @@ export class TagComponent implements AfterContentInit {
 
   hasCustomContent = false;
 
-  @ContentChild('customTagContent') customTagContent?: ElementRef;
+  @ContentChild('content', { static: false, read: ElementRef }) projectedContent?: ElementRef;
 
   @HostBinding('class')
   get hostClass(): string {
@@ -37,7 +37,7 @@ export class TagComponent implements AfterContentInit {
   }
 
   ngAfterContentInit() {
-    this.hasCustomContent = !!this.customTagContent;
+    this.hasCustomContent = !!this.projectedContent?.nativeElement?.textContent?.trim();
   }
 
   onClick() {

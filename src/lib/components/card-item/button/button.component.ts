@@ -13,20 +13,20 @@ import {NgClass, NgIf, NgTemplateOutlet} from '@angular/common';
   ],
   standalone: true,
   templateUrl: './button.component.html',
-  styleUrl: './button.component.scss'
+  styleUrls: ['./button.component.scss']
 })
 export class ButtonComponent {
   @Input() button!: CardItemButton;
   @Input() className = '';
   @Input() arrangeType: ArrangeType = ArrangeType.LIST;
-  @Input() buttonTemplate?: TemplateRef<any>;
-  @Output() click = new EventEmitter<CardItemButton>();
+  @Input() buttonTemplate?: TemplateRef<{ $implicit: CardItemButton }>;
+  @Output() buttonClick = new EventEmitter<CardItemButton>();
 
   protected readonly BUTTON_CLASS_MAP = BUTTON_CLASS_MAP;
 
   onClick() {
     if (!this.button.disabled) {
-      this.click.emit(this.button);
+      this.buttonClick.emit(this.button);
     }
   }
 }
