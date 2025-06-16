@@ -1,0 +1,32 @@
+<div class="arrange-type" *ngIf="isShowArrangeType">
+  <lib-toggle
+    [selected]="cards.arrangeType"
+    [options]="toggleOptions"
+    (change)="onArrangeTypeToggle($event)"
+  ></lib-toggle>
+</div>
+
+<!-- 卡片容器 -->
+<div class="card-container" [ngClass]="getContainerClass(cards.arrangeType)">
+  <ng-container *ngFor="let card of cards.card; let i = index">
+    <!-- 使用者傳入的卡片顯示模板 -->
+    <ng-container
+      *ngIf="cardTemplate; else defaultCardTemplate"
+      [ngTemplateOutlet]="cardTemplate"
+      [ngTemplateOutletContext]="{ $implicit: card, index: i }"
+    ></ng-container>
+
+    <ng-template #defaultCardTemplate>
+      <ng-container *ngIf="isCardItemType(card)">
+        <lib-card-item
+          [cardItem]="card"
+          [arrangeType]="cards.arrangeType"
+          [class.center]="isCenterCard(i)"
+          (tagClick)="tagClick.emit($event)"
+          (buttonClick)="buttonClick.emit($event)"
+          (click)="cardClick.emit(card)"
+        ></lib-card-item>
+      </ng-container>
+    </ng-template>
+  </ng-container>
+</div>

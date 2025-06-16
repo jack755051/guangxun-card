@@ -1,0 +1,28 @@
+@use '../../assets/mixin' as *;
+@use '../../assets/variables' as *;
+@use '../../assets/color' as *;
+
+:host {
+  @include default-flex($direction: row, $justify: flex-end, $gap: 2rem);
+  @include default-container($width: auto, $height: auto);
+
+  > .toggle-button {
+    @include default-container($width: auto, $height: auto);
+    @include container-padding($padding-x: 1rem);
+    // background-color: $gray-300;
+    border-radius: 10px;
+    transition: background-color 0.2s ease;
+
+    > fa-icon {
+      @include default-text-style($font-size: 2.5rem, $font-weight: 500, $color: $gray-700);
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    &.active {
+      fa-icon {
+        color: $neon-900;
+      }
+    }
+  }
+}

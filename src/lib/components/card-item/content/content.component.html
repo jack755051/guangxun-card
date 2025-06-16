@@ -1,0 +1,22 @@
+<img *ngIf="image" [src]="image" [alt]="subTitle || title" />
+<div class="content">
+  <div class="text">
+    <div class="title">{{ title }}</div>
+    <div class="subTitle" *ngIf="subTitle">{{ subTitle }}</div>
+    <div class="description" *ngIf="description">{{ description }}</div>
+  </div>
+  <div class="tags" *ngIf="tags?.length">
+    <ng-container *ngFor="let tag of tags">
+      <ng-container *ngIf="tagTemplate; else defaultTag">
+        <ng-container *ngTemplateOutlet="tagTemplate; context: { $implicit: tag }" />
+      </ng-container>
+      <ng-template #defaultTag>
+        <lib-tag
+          [tag]="tag"
+          [arrangeType]="arrangeType"
+          (click)="onTagClick(tag)"
+        ></lib-tag>
+      </ng-template>
+    </ng-container>
+  </div>
+</div>

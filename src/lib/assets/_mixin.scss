@@ -1,0 +1,76 @@
+// ----- 空間 start -----
+@mixin space($background-image: '', $background-size: contain) {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: $background-size;
+  background-image: $background-image;
+}
+
+@mixin container-padding($padding-x: 0, $padding-y: 0) {
+  padding: $padding-y $padding-x;
+}
+
+@mixin container-margin($margin-x: 0, $margin-y: 0) {
+  margin: $margin-y $margin-x;
+}
+
+// ----- 空間 end -----
+
+// ----- 排版 start -----
+
+//基礎排版
+@mixin default-flex($justify: center, $align: center, $direction: row, $gap: 0) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+// ----- 排版 over-----
+
+@mixin default-container($width: null, $height: null) {
+  @if $width != null {
+    width: $width;
+  }
+
+  @if $height != null {
+    height: $height;
+  }
+}
+
+@mixin default-container-limit($min-width: 0, $max-width: 0, $min-height: 0, $max-height: 0) {
+  min-width: $min-width;
+  max-width: $max-width;
+  min-height: $min-height;
+  max-height: $max-height;
+}
+
+@mixin default-text-style($font-size: 1.6rem, $font-weight: 500, $color: black) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  color: $color;
+}
+
+//滑鼠移動時的文字樣式
+@mixin hover-text-style(
+  $font-size: 1.6rem,
+  $font-weight: 500,
+  $hover-color: hsla(0, 0%, 96%, 1),
+  $hover-weight: 900,
+  $active-weight: 900
+) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+
+  &:hover {
+    color: $hover-color;
+    cursor: pointer;
+    font-weight: $hover-weight;
+  }
+
+  &.active {
+    color: $hover-color;
+    font-weight: $active-weight;
+  }
+}

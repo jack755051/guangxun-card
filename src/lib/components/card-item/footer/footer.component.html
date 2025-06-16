@@ -1,0 +1,6 @@
+<lib-button
+  *ngFor="let action of actions"
+  [button]="action"
+  [arrangeType]="arrangeType"
+  (click)="onButtonClick(action)"
+></lib-button>

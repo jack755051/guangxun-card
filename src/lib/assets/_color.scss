@@ -1,0 +1,129 @@
+// 主色
+$primary-900: hsla(218, 40%, 10%, 1); // #0B1321
+$primary-800: hsla(217, 39%, 14%, 1); // #101B2E
+$primary-700: hsla(217, 38%, 18%, 1); // #15243B
+$primary-600: hsla(217, 35%, 23%, 1); // #1A2E4A
+$primary-500: hsla(217, 32%, 30%, 1); // #1F3A5C
+$primary-400: hsla(217, 45%, 38%, 1); // #294B74
+$primary-300: hsla(217, 50%, 45%, 1); // #3A5D91
+$primary-200: hsla(217, 50%, 60%, 1); // #577AAE
+$primary-100: hsla(217, 58%, 75%, 1); // #89A5CD
+$primary-50: hsla(217, 65%, 90%, 1); // 自動補上
+
+$primary-palette: (
+  50: $primary-50,
+  100: $primary-100,
+  200: $primary-200,
+  300: $primary-300,
+  400: $primary-400,
+  500: $primary-500,
+  600: $primary-600,
+  700: $primary-700,
+  800: $primary-800,
+  900: $primary-900,
+);
+
+// 次要色
+$neon-900: hsla(176, 100%, 40%, 1); // #00E1D4
+$neon-800: hsla(176, 100%, 45%, 1); // #1AE5D8
+$neon-700: hsla(176, 100%, 50%, 1); // #33E9DC
+$neon-600: hsla(176, 100%, 55%, 1); // #4CEDE0
+$neon-500: hsla(176, 100%, 60%, 1); // #66F1E4
+$neon-400: hsla(176, 100%, 70%, 1); // #7FF5E8
+$neon-300: hsla(176, 100%, 75%, 1); // #99F9EC
+$neon-200: hsla(176, 100%, 85%, 1); // #B2FDF0
+$neon-100: hsla(176, 100%, 94%, 1); // #CCFFF4
+$neon-50: hsla(176, 100%, 98%, 1); // 自動補上
+
+$neon-palette: (
+  50: $neon-50,
+  100: $neon-100,
+  200: $neon-200,
+  300: $neon-300,
+  400: $neon-400,
+  500: $neon-500,
+  600: $neon-600,
+  700: $neon-700,
+  800: $neon-800,
+  900: $neon-900,
+);
+
+// 按鈕色
+$btn-blue-900: hsla(195, 100%, 30%, 1); // #007BAA
+$btn-blue-800: hsla(195, 100%, 35%, 1); // #009ACF
+$btn-blue-700: hsla(195, 100%, 40%, 1); // #00BFFF
+$btn-blue-600: hsla(195, 100%, 50%, 1); // #33CCFF
+$btn-blue-500: hsla(195, 100%, 60%, 1); // hover
+$btn-blue-400: hsla(195, 100%, 75%, 1); // disabled
+$btn-blue-300: hsla(195, 100%, 85%, 1);
+$btn-blue-200: hsla(195, 100%, 92%, 1);
+$btn-blue-100: hsla(195, 100%, 97%, 1);
+$btn-blue-50: hsla(195, 100%, 99%, 1);
+
+$btn-blue-palette: (
+  50: $btn-blue-50,
+  100: $btn-blue-100,
+  200: $btn-blue-200,
+  300: $btn-blue-300,
+  400: $btn-blue-400,
+  500: $btn-blue-500,
+  600: $btn-blue-600,
+  700: $btn-blue-700,
+  800: $btn-blue-800,
+  900: $btn-blue-900,
+);
+
+// 豬肝紅（liver red）
+$liver-red-900: hsla(0, 45%, 20%, 1); // #661a1a
+$liver-red-800: hsla(0, 50%, 25%, 1); // #802020
+$liver-red-700: hsla(0, 55%, 30%, 1); // #993333
+$liver-red-600: hsla(0, 60%, 35%, 1); // #b34d4d
+$liver-red-500: hsla(0, 65%, 45%, 1); // #cc6666
+$liver-red-400: hsla(0, 70%, 60%, 1); // #e69999
+$liver-red-300: hsla(0, 75%, 70%, 1); // #f2bcbc
+$liver-red-200: hsla(0, 80%, 85%, 1); // #f9dede
+$liver-red-100: hsla(0, 85%, 95%, 1); // #fef5f5
+$liver-red-50: hsla(0, 90%, 98%, 1); // #fffafa
+
+$liver-red-palette: (
+  50: $liver-red-50,
+  100: $liver-red-100,
+  200: $liver-red-200,
+  300: $liver-red-300,
+  400: $liver-red-400,
+  500: $liver-red-500,
+  600: $liver-red-600,
+  700: $liver-red-700,
+  800: $liver-red-800,
+  900: $liver-red-900,
+);
+// 灰階色
+$gray-900: hsla(200, 18%, 26%, 1);
+$gray-800: hsla(220, 12%, 33%, 1); // 由 AI 生成補上
+$gray-700: hsla(246, 6%, 40%, 1);
+$gray-600: hsla(246, 5%, 44%, 1); // 由 AI 生成補上
+$gray-500: hsla(246, 4%, 48%, 1);
+$gray-400: hsla(197, 6%, 56%, 1);
+$gray-300: hsla(213, 7%, 70%, 1);
+$gray-250: hsla(0, 0%, 82%, 1);
+$gray-200: hsla(0, 0%, 90%, 1);
+$gray-100: hsla(0, 0%, 94%, 1);
+$gray-50: hsla(0, 0%, 96%, 1);
+$gray-palette: (
+  50: $gray-50,
+  100: $gray-100,
+  200: $gray-200,
+  250: $gray-250,
+  300: $gray-300,
+  400: $gray-400,
+  500: $gray-500,
+  600: $gray-600,
+  700: $gray-700,
+  800: $gray-800,
+  900: $gray-900,
+);
+
+$white: #ffffff;
+$black: $gray-900;
+
+$primary-gray-100: hsla(174, 19%, 96%, 1);

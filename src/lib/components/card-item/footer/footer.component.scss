@@ -1,0 +1,19 @@
+@use '../../../assets/mixin' as *;
+@use '../../../assets/variables' as *;
+@use '../../../assets/color' as *;
+
+:host {
+  width: 100%;
+
+  &.footer-list-style {
+    @include default-flex($direction: column, $align: flex-end, $justify: flex-start, $gap: 24px);
+    @include default-container($width: 100%, $height: auto);
+    @include container-padding($padding-x: 20px);
+  }
+
+  &.footer-grid-style {
+    @include default-flex($direction: row, $justify: center, $gap: 24px);
+    @include default-container($width: 100%, $height: auto);
+    flex-wrap: wrap; // 防止過多按鈕造成超出
+  }
+}

@@ -1,0 +1,4 @@
+<div class="tag" (click)="onClick()">
+  <ng-content></ng-content>
+  <ng-container *ngIf="!hasCustomContent">{{ tag.label }}</ng-container>
+</div>

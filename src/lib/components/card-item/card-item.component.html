@@ -1,0 +1,19 @@
+<div class="card-wrapper" (click)="onCardClick($event)">
+  <lib-header
+    *ngIf="shouldShowHeader"
+    [avatar]="cardItem.header.avatar"
+    [title]="cardItem.header.title"
+    [arrangeType]="arrangeType"
+  ></lib-header>
+
+  <lib-content
+    [image]="cardItem.content.image"
+    [title]="cardItem.content.title"
+    [subTitle]="cardItem.content.subTitle"
+    [description]="cardItem.content.description"
+    [tags]="cardItem.content.tag || []"
+    [arrangeType]="arrangeType"
+  ></lib-content>
+
+  <lib-footer [actions]="cardItem.footer.button" [arrangeType]="arrangeType"></lib-footer>
+</div>

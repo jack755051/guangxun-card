@@ -1,0 +1,32 @@
+@use '../../../assets/mixin' as *;
+@use '../../../assets/variables' as *;
+@use '../../../assets/_color' as *;
+
+:host {
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1.5px solid $neon-900;
+  color: $neon-900;
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    color: inherit;
+
+    &:hover {
+      background-color: $neon-900;
+      color: white !important;
+    }
+  }
+
+  &.tag-list-style .tag {
+    @include default-text-style($font-size: 1.2rem, $color: $neon-900);
+    @include container-padding($padding-x: 12px, $padding-y: 5px);
+  }
+
+  &.tag-grid-style .tag {
+    @include default-text-style($font-size: 1rem, $color: $neon-900);
+    @include container-padding($padding-x: 10px, $padding-y: 5px);
+  }
+}

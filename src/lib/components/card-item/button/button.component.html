@@ -1,0 +1,14 @@
+<button
+  [ngClass]="[BUTTON_CLASS_MAP[arrangeType] || '', className]"
+  class="guangxun-button"
+  (click)="onClick()"
+  [disabled]="button.disabled"
+  type="button"
+>
+  <ng-container *ngIf="buttonTemplate; else defaultContent">
+    <ng-container *ngTemplateOutlet="buttonTemplate; context: { $implicit: button }"></ng-container>
+  </ng-container>
+  <ng-template #defaultContent>
+    {{ button.label }}
+  </ng-template>
+</button>

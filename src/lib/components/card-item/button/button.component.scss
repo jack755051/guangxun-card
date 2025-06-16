@@ -1,0 +1,28 @@
+@use '../../../assets/mixin' as *;
+@use '../../../assets/variables' as *;
+@use '../../../assets/color' as *;
+
+button {
+  &.guangxun-button {
+    border: 2px solid $btn-blue-900;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &.button-list-style {
+      @include default-container($width: auto, $height: 100%);
+      @include container-padding($padding-x: 18px, $padding-y: 10px);
+      @include default-text-style($font-size: 1.8rem, $color: $btn-blue-900);
+    }
+
+    &.button-grid-style {
+      @include default-container($width: 100%, $height: auto);
+      @include container-padding($padding-x: 12px, $padding-y: 10px);
+      @include default-text-style($font-size: 1.5rem, $color: $btn-blue-900);
+    }
+
+    &:hover {
+      background-color: $btn-blue-900;
+      color: $white;
+    }
+  }
+}

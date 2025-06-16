@@ -1,0 +1,14 @@
+<div class="guangxun-header">
+  <!-- Icon 類型 -->
+  <div class="icon" *ngIf="isAvatarIcon(avatar)">
+    <fa-icon [icon]="avatar.icon" [ngClass]="avatarClass"></fa-icon>
+  </div>
+
+  <!-- Image 類型 -->
+  <div class="icon" *ngIf="isAvatarImage(avatar)">
+    <img [src]="avatar.link" [alt]="avatar.alt || 'avatar'" [ngClass]="avatarClass" />
+  </div>
+
+  <!-- Title -->
+  <div class="title">{{ title }}</div>
+</div>
