@@ -48,14 +48,6 @@ export class GuangxunCardComponent <T extends CardItem = CardItem> implements On
     this.isShowArrangeType = meta.showInToggle;
     this.arrangeTypeIcon = meta.icon;
     this.toggleOptions = this._cardService.getToggleOptions();
-
-    this.toggleOptions = Object.entries(ARRANGE_TYPE_META_MAP)
-      .filter(([_, meta]) => meta.showInToggle)
-      .map(([key, meta]) => ({
-        value: key as ArrangeType,
-        icon: meta.icon,
-        label: meta.label,
-      }));
   }
 
   onArrangeTypeToggle(arrangeType: ArrangeType) {
