@@ -8,15 +8,16 @@
     "@angular/common": "^19.2.0",
     "@angular/core": "^19.2.0",
     "@angular/router": "^19.2.0",
-    "@ngx-translate/core": "^14.0.0",
     "@fortawesome/angular-fontawesome": "^0.13.0",
     "@fortawesome/fontawesome-svg-core": "^6.5.0",
-    "@fortawesome/free-solid-svg-icons": "^6.5.0"
+    "@fortawesome/free-solid-svg-icons": "^6.5.0",
+    "@ngx-translate/core": "^14.0.0"
   },
   "assets": [
     "src/assets"
   ],
   "dependencies": {
+    "@fortawesome/angular-fontawesome": "^2.0.1",
     "tslib": "^2.3.0"
   },
   "scripts": {
@@ -28,6 +29,11 @@
     "type": "git",
     "url": "https://github.com/jack755051/guangxun-card.git"
   },
-  "keywords": ["angular", "card", "guangxun", "component"],
+  "keywords": [
+    "angular",
+    "card",
+    "guangxun",
+    "component"
+  ],
   "sideEffects": false
 }
