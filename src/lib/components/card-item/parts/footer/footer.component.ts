@@ -1,8 +1,8 @@
 import {Component, EventEmitter, HostBinding, Input, Output} from '@angular/core';
-import {ArrangeType} from '../../../models/guangxun-card.enum';
-import {CardItemButton} from '../../../models/guangxun-card.interface';
-import {FOOTER_CLASS_MAP} from '../../../models/arrange-type-class.map';
-import {ButtonComponent} from '../button/button.component';
+import {ArrangeType} from '../../../../models/guangxun-card.enum';
+import {CardItemButton} from '../../../../models/guangxun-card.interface';
+import {FOOTER_CLASS_MAP} from '../../../../models/arrange-type-class.map';
+import {ButtonComponent} from '../../utils/button/button.component';
 import {NgForOf} from '@angular/common';
 
 @Component({

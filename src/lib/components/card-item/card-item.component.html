@@ -1,4 +1,4 @@
-<div class="card-wrapper" (click)="onCardClick($event)">
+<div class="card-wrapper-a">
   <lib-header
     *ngIf="shouldShowHeader"
     [arrangeType]="arrangeType"
@@ -19,5 +19,7 @@
   <lib-footer
     [arrangeType]="arrangeType"
     [actions]="cardItem.footer.button"
-    ></lib-footer>
+    (buttonClick)="onButtonClick($event)"
+  ></lib-footer>
+
 </div>

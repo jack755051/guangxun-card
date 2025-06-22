@@ -1,11 +1,19 @@
-import {Component, EventEmitter, HostBinding, Input, Output} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  HostBinding,
+  HostListener,
+  Input,
+  Output
+} from '@angular/core';
 import {CardItem, CardItemButton, CardItemTag} from '../../models/guangxun-card.interface';
 import {CARD_CLASS_MAP} from '../../models/arrange-type-class.map';
 import {CardItemHeaderAvatar, CardItemHeaderFaIcon, CardItemHeaderImage} from '../../models/card.type';
 import {ArrangeType} from '../../models/guangxun-card.enum';
-import {HeaderComponent} from './header/header.component';
-import {FooterComponent} from './footer/footer.component';
-import {ContentComponent} from './content/content.component';
+import {HeaderComponent} from './parts/header/header.component';
+import {FooterComponent} from './parts/footer/footer.component';
+import {ContentComponent} from './parts/content/content.component';
 import {NgIf} from '@angular/common';
 @Component({
   selector: 'lib-card-item',
@@ -17,72 +25,57 @@ import {NgIf} from '@angular/common';
   ],
   standalone: true,
   templateUrl: './card-item.component.html',
-  styleUrl: './card-item.component.scss'
+  styleUrls:['./card-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardItemComponent {
+  /* ---------------- Inputs ---------------- */
   @Input() className = '';
-  @Input() cardItem!: CardItem;
-  private _arrangeType: ArrangeType = ArrangeType.LIST;
-  @Input()
-  set arrangeType(value: ArrangeType) {
-    this._arrangeType = value;
-    this._setHostClass(); // 設定 class
+
+  private _item!: CardItem;
+  @Input() set cardItem(v: CardItem) {
+    this._item = v;
+  }
+  get cardItem(): CardItem {
+    return this._item;
+  }
+
+  @Input() set arrangeType(v: ArrangeType) {
+    this._arrangeType = v;
+    this.updateHostClass();
   }
   get arrangeType(): ArrangeType {
     return this._arrangeType;
   }
-  @Output() tagClick = new EventEmitter<{ card: CardItem; tag: CardItemTag }>();
+  private _arrangeType: ArrangeType = ArrangeType.LIST;
+
+  /* ---------------- Outputs ---------------- */
+  @Output() tagClick    = new EventEmitter<{ card: CardItem; tag: CardItemTag }>();
   @Output() buttonClick = new EventEmitter<{ card: CardItem; button: CardItemButton }>();
-  @Output() cardClick = new EventEmitter<CardItem>();
-  @HostBinding('class') hostClass = '';
+  @Output() cardClick   = new EventEmitter<CardItem>();
 
-  readonly ArrangeType = ArrangeType;
-  private _setHostClass() {
-    this.hostClass = this.getCardItemClass();
+  /* ---------------- Host class ---------------- */
+  @HostBinding('class') hostClass = CARD_CLASS_MAP[this._arrangeType];
+
+  // ---------------- Methods ----------------
+  private updateHostClass(): void {
+    this.hostClass = [CARD_CLASS_MAP[this.arrangeType], this.className].filter(Boolean).join(' ');
   }
-
-  constructor() {}
-  ngOnInit(): void {}
-
-  // ---- 方法 start----
 
   onTagClick(tag: CardItemTag) {
     this.tagClick.emit({ card: this.cardItem, tag });
   }
-
-  onButtonClick(button: CardItemButton) {
-    this.buttonClick.emit({ card: this.cardItem, button });
+  onButtonClick(btn: CardItemButton) {
+    this.buttonClick.emit({ card: this.cardItem, button: btn });
   }
 
   get shouldShowHeader(): boolean {
-    // TODO: 根據需求決定是否顯示 header
-    // return this.arrangeType !== ArrangeType.LIST;
-    return false;
+    return this.arrangeType !== ArrangeType.LIST;
   }
 
-  // 判斷是否為 icon
-  isAvatarIcon(avatar: CardItemHeaderAvatar): avatar is CardItemHeaderFaIcon {
-    return (avatar as CardItemHeaderFaIcon).icon !== undefined;
-  }
-
-  isAvatarImage(avatar: CardItemHeaderAvatar): avatar is CardItemHeaderImage {
-    return (avatar as CardItemHeaderImage).link !== undefined;
-  }
-
-  getCardItemClass(): string {
-    return [CARD_CLASS_MAP[this.arrangeType], this.className].filter(Boolean).join(' ');
-  }
-
-  onCardClick(event: MouseEvent) {
-    const target = event.target as HTMLElement;
-    if (
-      target.closest('guangxun-button') ||
-      target.closest('guangxun-tag') ||
-      target.closest('.action')
-    ) {
-      return;
-    }
+  @HostListener('click')
+  onCardClick() {
     this.cardClick.emit(this.cardItem);
+    console.log('Card clicked:', this.cardItem);
   }
-
 }

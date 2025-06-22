@@ -1,7 +1,7 @@
 <button
   [ngClass]="[BUTTON_CLASS_MAP[arrangeType] || '', className]"
   class="guangxun-button"
-  (click)="onClick()"
+  (click)="onClick($event)"
   [disabled]="button.disabled"
   type="button"
 >

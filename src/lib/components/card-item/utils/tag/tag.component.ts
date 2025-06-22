@@ -9,9 +9,9 @@ import {
   Output
 } from '@angular/core';
 import {NgClass, NgIf} from '@angular/common';
-import {CardItemTag} from '../../../models/guangxun-card.interface';
-import {ArrangeType} from '../../../models/guangxun-card.enum';
-import {TAG_CLASS_MAP} from '../../../models/arrange-type-class.map';
+import {CardItemTag} from '../../../../models/guangxun-card.interface';
+import {ArrangeType} from '../../../../models/guangxun-card.enum';
+import {TAG_CLASS_MAP} from '../../../../models/arrange-type-class.map';
 
 @Component({
   selector: 'lib-tag',
@@ -46,11 +46,12 @@ export class TagComponent implements AfterContentInit {
       !!this.projectedContent?.nativeElement?.textContent?.trim();
   }
 
-  onClick() {
-    if (!this.tag.disabled) {
-      this.tagSelected.emit(this.tag);
-    }
+  onClick(e: MouseEvent) {
+    e.stopPropagation();
+    if (this.tag.disabled) return;
+    this.tagSelected.emit(this.tag);
     console.log('Tag clicked:', this.tag);
   }
+
   protected readonly TAG_CLASS_MAP = TAG_CLASS_MAP;
 }

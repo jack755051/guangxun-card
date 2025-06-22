@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input, TemplateRef} from '@angular/core';
-import {CardItemHeaderAvatar, CardItemHeaderFaIcon, CardItemHeaderImage} from '../../../models/card.type';
-import {ArrangeType} from '../../../models/guangxun-card.enum';
-import {HEADER_CLASS_MAP} from '../../../models/arrange-type-class.map';
+import {CardItemHeaderAvatar, CardItemHeaderFaIcon, CardItemHeaderImage} from '../../../../models/card.type';
+import {ArrangeType} from '../../../../models/guangxun-card.enum';
+import {HEADER_CLASS_MAP} from '../../../../models/arrange-type-class.map';
 import {FaIconComponent} from '@fortawesome/angular-fontawesome';
 import {NgClass, NgIf, NgTemplateOutlet} from '@angular/common';
 

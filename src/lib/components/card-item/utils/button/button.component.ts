@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output, TemplateRef} from '@angular/core';
-import {CardItemButton} from '../../../models/guangxun-card.interface';
-import {ArrangeType} from '../../../models/guangxun-card.enum';
-import {BUTTON_CLASS_MAP} from '../../../models/arrange-type-class.map';
+import {CardItemButton} from '../../../../models/guangxun-card.interface';
+import {ArrangeType} from '../../../../models/guangxun-card.enum';
+import {BUTTON_CLASS_MAP} from '../../../../models/arrange-type-class.map';
 import {NgClass, NgIf, NgTemplateOutlet} from '@angular/common';
 
 @Component({
@@ -27,10 +27,10 @@ export class ButtonComponent {
 
   protected readonly BUTTON_CLASS_MAP = BUTTON_CLASS_MAP;
 
-  onClick() {
-    if (!this.button.disabled) {
-      this.buttonClick.emit(this.button);
-      console.log('Button clicked:', this.button);
-    }
+  onClick(e: MouseEvent) {
+    e.stopPropagation();
+    if (this.button.disabled) return;
+    this.buttonClick.emit(this.button);
+    console.log('Button clicked:', this.button);
   }
 }

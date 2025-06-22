@@ -2,7 +2,7 @@
   [ngClass]="[TAG_CLASS_MAP[arrangeType] || '', extraClass]"
   class="guangxun-tag"
   [disabled]="tag.disabled"
-  (click)="onClick()"
+  (click)="onClick($event)"
 >
   <ng-content></ng-content>
   <ng-container

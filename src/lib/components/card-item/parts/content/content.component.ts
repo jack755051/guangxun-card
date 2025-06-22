@@ -1,9 +1,9 @@
 import {Component, EventEmitter, HostBinding, Input, Output, TemplateRef} from '@angular/core';
-import {ArrangeType} from '../../../models/guangxun-card.enum';
-import {CardItemTag} from '../../../models/guangxun-card.interface';
-import {CONTENT_CLASS_MAP} from '../../../models/arrange-type-class.map';
+import {ArrangeType} from '../../../../models/guangxun-card.enum';
+import {CardItemTag} from '../../../../models/guangxun-card.interface';
+import {CONTENT_CLASS_MAP} from '../../../../models/arrange-type-class.map';
 import {NgIf,NgForOf} from '@angular/common';
-import {TagComponent} from '../tag/tag.component';
+import {TagComponent} from '../../utils/tag/tag.component';
 
 @Component({
   selector: 'lib-content',
