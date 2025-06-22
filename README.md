@@ -226,7 +226,6 @@ ng test
 ## 🪪 授權 License
 
 [MIT](./LICENSE)
-"""
 
 # Save to a Markdown file
 output_path = Path("/mnt/data/README.md")
