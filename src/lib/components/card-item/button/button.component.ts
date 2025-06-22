@@ -30,6 +30,7 @@ export class ButtonComponent {
   onClick() {
     if (!this.button.disabled) {
       this.buttonClick.emit(this.button);
+      console.log('Button clicked:', this.button);
     }
   }
 }

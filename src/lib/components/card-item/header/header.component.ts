@@ -1,24 +1,29 @@
-import {Component, HostBinding, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostBinding, Input, TemplateRef} from '@angular/core';
 import {CardItemHeaderAvatar, CardItemHeaderFaIcon, CardItemHeaderImage} from '../../../models/card.type';
 import {ArrangeType} from '../../../models/guangxun-card.enum';
 import {HEADER_CLASS_MAP} from '../../../models/arrange-type-class.map';
 import {FaIconComponent} from '@fortawesome/angular-fontawesome';
-import {NgClass, NgIf} from '@angular/common';
+import {NgClass, NgIf, NgTemplateOutlet} from '@angular/common';
 
 @Component({
   selector: 'lib-header',
   imports: [
     FaIconComponent,
     NgClass,
-    NgIf
+    NgIf,
+    NgTemplateOutlet
   ],
   standalone: true,
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrls: ['./header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
+  /** 預設 Avatar 物件；如果想完全自定義可用 avatarTpl 覆寫 */
   @Input() avatar!: CardItemHeaderAvatar;
-  @Input() title!: string;
+  /** 自定義模板（優先級更高） */
+  @Input() avatarTpl?: TemplateRef<unknown>;
+  @Input() title = '';
   @Input() arrangeType: ArrangeType = ArrangeType.LIST;
 
   @HostBinding('class')
@@ -32,6 +37,7 @@ export class HeaderComponent {
       : '';
   }
 
+  /** 判斷工具 */
   isAvatarIcon(avatar: CardItemHeaderAvatar): avatar is CardItemHeaderFaIcon {
     return (avatar as CardItemHeaderFaIcon).icon !== undefined;
   }

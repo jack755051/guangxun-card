@@ -1,14 +1,21 @@
 <div class="guangxun-header">
-  <!-- Icon 類型 -->
-  <div class="icon" *ngIf="isAvatarIcon(avatar)">
-    <fa-icon [icon]="avatar.icon" [ngClass]="avatarClass"></fa-icon>
-  </div>
+  <ng-container *ngIf="avatarTpl; else builtIn" [ngTemplateOutlet]="avatarTpl"></ng-container>
+  <ng-template #builtIn>
+    <!-- Icon 類型 -->
+    <fa-icon
+      *ngIf="avatar && isAvatarIcon(avatar)"
+      [icon]="avatar.icon"
+      [ngClass]="avatarClass"
+    ></fa-icon>
 
-  <!-- Image 類型 -->
-  <div class="icon" *ngIf="isAvatarImage(avatar)">
-    <img [src]="avatar.link" [alt]="avatar.alt || 'avatar'" [ngClass]="avatarClass" />
-  </div>
-
-  <!-- Title -->
+    <!-- Image 類型 -->
+    <img
+      *ngIf="avatar && isAvatarImage(avatar)"
+      class="avatar-img"
+      [src]="avatar.link"
+      [alt]="avatar.alt || 'avatar'"
+      [ngClass]="avatarClass"
+    />
+  </ng-template>
   <div class="title">{{ title }}</div>
 </div>
