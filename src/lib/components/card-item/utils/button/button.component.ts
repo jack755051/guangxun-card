@@ -31,6 +31,6 @@ export class ButtonComponent {
     e.stopPropagation();
     if (this.button.disabled) return;
     this.buttonClick.emit(this.button);
-    console.log('Button clicked:', this.button);
+    console.log('Button clicked-aaaaa:', this.button);
   }
 }
