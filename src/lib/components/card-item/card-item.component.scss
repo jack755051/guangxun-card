@@ -6,6 +6,7 @@ $card-image-size: 18vh;
 $font-size-base: 10px;
 $margin-size: 10px;
 
+// 基础样式
 :host {
   @include default-container($width: 100%, $height: 100%);
   background-color: $gray-50;
@@ -18,17 +19,8 @@ $margin-size: 10px;
     height: 100%;
     display: flex;
     border-radius: inherit;
-    transition:
-      transform 0.2s ease,
-      box-shadow 0.2s ease;
-
-    &:hover {
-      background-color: #f5f5f5;
-      transform: translateX(-8px) translateY(-8px);
-
-      // 調整陰影為上下左右均勻
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-    }
+    position: relative;
+    overflow: hidden;
   }
 
   &.card-list-style .card-wrapper {
@@ -40,5 +32,179 @@ $margin-size: 10px;
     @include default-flex($direction: column, $justify: space-between);
     @include default-container($width: 100%, $height: auto);
     @include container-padding($padding-y: 1.2rem);
+  }
+}
+
+// 经典阴影风格 - 默认
+:host.shadow-style {
+  .card-wrapper {
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition:
+      transform 0.25s ease-out,
+      box-shadow 0.25s ease-out,
+      background-color 0.2s ease-out;
+
+    &:hover {
+      background-color: #f8f9fa;
+      transform: translateX(-6px) translateY(-6px);
+      box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.1),
+        0 8px 32px rgba(0, 0, 0, 0.08),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+
+    &:active {
+      transform: translateX(-4px) translateY(-4px);
+      transition-duration: 0.1s;
+      box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.08),
+        0 4px 16px rgba(0, 0, 0, 0.06);
+    }
+  }
+}
+
+// 浮动风格
+:host.float-style {
+  .card-wrapper {
+    background-color: white;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    transition:
+      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 0.2s ease-out;
+
+    &:hover {
+      background-color: #fdfdfd;
+      transform: translateY(-8px);
+      box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.08),
+        0 16px 48px rgba(0, 0, 0, 0.06);
+    }
+
+    &:active {
+      transform: translateY(-6px);
+      transition-duration: 0.1s;
+    }
+  }
+}
+
+// 现代玻璃态风格
+:host.glass-style {
+  border-radius: 12px;
+
+  .card-wrapper {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+      0 2px 16px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition:
+      transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+      background 0.2s ease-out,
+      border-color 0.2s ease-out;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.95);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateX(-8px) translateY(-8px) scale(1.02);
+      box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.1),
+        0 24px 80px rgba(0, 0, 0, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    &:active {
+      transform: translateX(-6px) translateY(-6px) scale(1.01);
+      transition-duration: 0.1s;
+    }
+  }
+}
+
+// 极简风格
+:host.minimal-style {
+  .card-wrapper {
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    transition:
+      transform 0.2s ease-out,
+      border-color 0.2s ease-out,
+      background-color 0.2s ease-out;
+
+    &:hover {
+      background-color: #fafafa;
+      border-color: #d1d5db;
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(-1px);
+      transition-duration: 0.1s;
+    }
+  }
+}
+
+// 彩色阴影风格 (可配置主题色)
+:host.colored-style {
+  .card-wrapper {
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition:
+      transform 0.25s ease-out,
+      box-shadow 0.25s ease-out,
+      background-color 0.2s ease-out;
+
+    &:hover {
+      background-color: #f8f9ff;
+      transform: translateX(-6px) translateY(-6px);
+      box-shadow:
+        0 4px 20px rgba(99, 102, 241, 0.15),
+        0 8px 40px rgba(99, 102, 241, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+
+    &:active {
+      transform: translateX(-4px) translateY(-4px);
+      transition-duration: 0.1s;
+      box-shadow:
+        0 2px 12px rgba(99, 102, 241, 0.12),
+        0 4px 24px rgba(99, 102, 241, 0.08);
+    }
+  }
+}
+
+// 3D 立体风格
+:host.three-d-style {
+  .card-wrapper {
+    background-color: white;
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.1),
+      0 0 0 1px rgba(0, 0, 0, 0.05);
+    transition:
+      transform 0.2s ease-out,
+      box-shadow 0.2s ease-out;
+
+    &:hover {
+      transform:
+        translateX(-4px)
+        translateY(-4px)
+        rotateX(2deg)
+        rotateY(-2deg);
+      box-shadow:
+        4px 4px 12px rgba(0, 0, 0, 0.15),
+        8px 8px 24px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(0, 0, 0, 0.08);
+    }
+
+    &:active {
+      transform:
+        translateX(-2px)
+        translateY(-2px)
+        rotateX(1deg)
+        rotateY(-1deg);
+      transition-duration: 0.1s;
+    }
   }
 }
