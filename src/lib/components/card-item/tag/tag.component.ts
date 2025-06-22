@@ -50,6 +50,7 @@ export class TagComponent implements AfterContentInit {
     if (!this.tag.disabled) {
       this.tagSelected.emit(this.tag);
     }
+    console.log('Tag clicked:', this.tag);
   }
   protected readonly TAG_CLASS_MAP = TAG_CLASS_MAP;
 }

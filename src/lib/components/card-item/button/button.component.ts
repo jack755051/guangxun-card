@@ -16,8 +16,11 @@ import {NgClass, NgIf, NgTemplateOutlet} from '@angular/common';
   styleUrls: ['./button.component.scss']
 })
 export class ButtonComponent {
+  /** 傳進來的資料物件 */
   @Input() button!: CardItemButton;
+  /** 額外 class，給使用者客製化樣式 */
   @Input() className = '';
+  /** 目前排版型態 */
   @Input() arrangeType: ArrangeType = ArrangeType.LIST;
   @Input() buttonTemplate?: TemplateRef<{ $implicit: CardItemButton }>;
   @Output() buttonClick = new EventEmitter<CardItemButton>();

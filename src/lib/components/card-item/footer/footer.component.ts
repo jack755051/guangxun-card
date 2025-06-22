@@ -13,7 +13,7 @@ import {NgForOf} from '@angular/common';
   ],
   standalone: true,
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.scss'
+  styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
   @Input() arrangeType: ArrangeType = ArrangeType.LIST;
@@ -24,6 +24,9 @@ export class FooterComponent {
   onButtonClick(button: CardItemButton) {
     this.buttonClick.emit(button);
   }
+
+  /** trackBy：避免整排重建 */
+  trackById = (_: number, b: CardItemButton) => b.id ?? b.label;
 
   @HostBinding('class')
   get hostClass(): string {

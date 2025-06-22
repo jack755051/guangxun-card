@@ -1,5 +1,5 @@
 <lib-button
-  *ngFor="let action of actions"
+  *ngFor="let action of actions; trackBy: trackById"
   [button]="action"
   [arrangeType]="arrangeType"
   (click)="onButtonClick(action)"

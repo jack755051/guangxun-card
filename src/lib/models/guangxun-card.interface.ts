@@ -46,16 +46,15 @@ export interface CardItemFooter {
 }
 
 export interface CardItemClickEvent {
+  id?: string
   label: string;
   action: () => void;
   disabled?: boolean;
 }
 
-export interface CardItemTag extends CardItemClickEvent{
-  id?: string
-}
-
-// 卡片項目按鈕
+// 卡片內容部分tag按鈕
+export interface CardItemTag extends CardItemClickEvent{}
+// 卡片底部button按鈕
 export interface CardItemButton extends CardItemClickEvent{}
 
 // -----
