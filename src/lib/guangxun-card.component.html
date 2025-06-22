@@ -20,6 +20,7 @@
       <ng-container *ngIf="isCardItemType(card)">
         <lib-card-item
           [cardItem]="card"
+          [style]="CardStyle.GLASS"
           [arrangeType]="cards.arrangeType"
           [class.center]="isCenterCard(i)"
           (tagClick)="tagClick.emit($event)"

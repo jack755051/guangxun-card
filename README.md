@@ -1,59 +1,239 @@
-# GuangxunCard
+from pathlib import Path
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.8.
+readme_content = """# @sanring/guangxun-card
 
-## Development server
+> 一套可高度配置的卡片布局组件（Angular Standalone + OnPush 支援泛型）
 
-To start a local development server, run:
+[![npm version](https://img.shields.io/npm/v/@sanring/guangxun-card)](https://www.npmjs.com/package/@sanring/guangxun-card)
+[![License](https://img.shields.io/npm/l/@sanring/guangxun-card)](LICENSE)
 
-```bash
-ng serve
-```
+---
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 📦 安裝
 
 ```bash
-ng generate component component-name
+# 使用 npm
+npm install @sanring/guangxun-card
+
+# 使用 yarn
+yarn add @sanring/guangxun-card
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
+## 🚀 快速上手
+
+```html
+<!-- template -->
+<lib-guangxun-card
+  [cards]="cards"
+  [style]="CardStyle.GLASS"
+  (tagClick)="onTagClicked($event)"
+  (buttonClick)="onButtonClicked($event)"
+  (cardClick)="onCardClicked($event)"
+></lib-guangxun-card>
 ```
 
-## Building
+```ts
+// component.ts
+import {
+  ArrangeType,
+  CardItem,
+  CardItemTag,
+  CardItemButton,
+  Cards,
+  CardStyle
+} from '@sanring/guangxun-card';
 
-To build the project run:
+cards: Cards<CardItem> = {
+  arrangeType: ArrangeType.GRID,
+  card: [
+    {
+      header: { avatar: { icon: ['fas', 'user'] }, title: '使用者名稱' },
+      content: {
+        title: '內容標題',
+        subTitle: '副標題',
+        description: '描述內容',
+        tag: [{ label: 'Tag A', action: () => alert('tag clicked') }]
+      },
+      footer: {
+        button: [{ label: '查看更多', action: () => alert('button clicked') }]
+      }
+    }
+  ]
+};
 
-```bash
-ng build
+onTagClicked(event: { card: CardItem; tag: CardItemTag }) {}
+onButtonClicked(event: { card: CardItem; button: CardItemButton }) {}
+onCardClicked(card: CardItem) {}
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## 🧩 API 參考
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+| 屬性 / 事件 | 類型 | 說明 |
+|-------------|------|------|
+| `@Input() cards` | `Cards<T>` | ✅ 必填。卡片資料結構 |
+| `@Input() cardTemplate` | `TemplateRef<{ $implicit: T; index: number }>` | 自定義卡片模板 |
+| `@Input() style` | `CardStyle` | 卡片樣式。預設為 `SHADOW` |
+| `@Output() tagClick` | `EventEmitter<{ card: T; tag: CardItemTag }>` | 點擊 Tag 時觸發 |
+| `@Output() buttonClick` | `EventEmitter<{ card: T; button: CardItemButton }>` | 點擊按鈕時觸發 |
+| `@Output() cardClick` | `EventEmitter<T>` | 點擊卡片空白區域時觸發 |
+
+---
+
+## 📦 可匯入型別與 Enum
+
+你可以從套件中匯入以下型別：
+
+```ts
+import {
+  Cards,
+  CardItem,
+  CardItemTag,
+  CardItemButton,
+  CardStyle,
+  ArrangeType,
+  CardConfig,
+  ArrangeTypeMeta
+} from '@sanring/guangxun-card';
+```
+
+### 🧾 Cards<T>
+
+```ts
+export interface Cards<T = any> {
+  card: T[];
+  arrangeType: ArrangeType;
+}
+```
+
+支援泛型，你可以擴充：
+
+```ts
+interface CustomCard extends CardItem {
+  extraNote: string;
+}
+
+const cards: Cards<CustomCard> = {
+  arrangeType: ArrangeType.LIST,
+  card: [
+    {
+      header: { avatar: { icon: ['fas', 'user'] }, title: 'Title' },
+      content: { title: '內容', subTitle: '副標題', description: '描述' },
+      footer: { button: [{ label: 'Click', action: () => {} }] },
+      extraNote: '備註'
+    }
+  ]
+};
+```
+
+---
+
+## 🎴 CardItem 結構說明
+
+```ts
+export interface CardItem {
+  header: CardItemHeader;
+  content: CardItemContent;
+  footer: CardItemFooter;
+}
+```
+
+### CardItemHeader
+
+```ts
+interface CardItemHeader {
+  avatar: CardItemHeaderAvatar;
+  title: string;
+}
+```
+
+### CardItemContent
+
+```ts
+interface CardItemContent {
+  image?: string;
+  title: string;
+  subTitle: string;
+  description: string;
+  tag?: CardItemTag[];
+}
+```
+
+### CardItemFooter
+
+```ts
+interface CardItemFooter {
+  button?: CardItemButton[];
+}
+```
+
+### CardItemButton / CardItemTag
+
+```ts
+export interface CardItemClickEvent {
+  id?: string;
+  label: string;
+  action: () => void;
+  disabled?: boolean;
+}
+
+export interface CardItemTag extends CardItemClickEvent {}
+export interface CardItemButton extends CardItemClickEvent {}
+```
+
+---
+
+## 🎨 列舉（Enum）
+
+### ArrangeType
+
+```ts
+export enum ArrangeType {
+  CENTER_STACK = 'center-stack',
+  GRID = 'grid',
+  LIST = 'list',
+}
+```
+
+### CardStyle
+
+```ts
+export enum CardStyle {
+  SHADOW  = 'shadow',
+  FLOAT   = 'float',
+  GLASS   = 'glass',
+  MINIMAL = 'minimal',
+  COLORED = 'colored',
+  THREE_D = 'three-d'
+}
+```
+
+---
+
+## 🧪 單元測試
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+## 📝 版本紀錄
 
-```bash
-ng e2e
-```
+查看 [CHANGELOG.md](./CHANGELOG.md)
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+## 🪪 授權 License
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+[MIT](./LICENSE)
+"""
+
+# Save to a Markdown file
+output_path = Path("/mnt/data/README.md")
+output_path.write_text(readme_content, encoding="utf-8")
+
+output_path

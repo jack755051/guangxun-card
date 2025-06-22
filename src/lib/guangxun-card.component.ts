@@ -4,7 +4,7 @@ import {CardItem, CardItemButton, CardItemTag, Cards} from './models/guangxun-ca
 import {IconDefinition} from '@fortawesome/angular-fontawesome';
 import {ToggleOption} from './models/toggle-option.interface';
 import {ARRANGE_TYPE_META_MAP} from './models/arrange-type-class.map';
-import { ArrangeType } from './models/guangxun-card.enum';
+import {ArrangeType, CardStyle} from './models/guangxun-card.enum';
 import {CardArrangeTypeIcons} from './models/fa-icon';
 import {GuangxunCardService} from './guangxun-card.service';
 import {CardItemComponent} from './components/card-item/card-item.component';
@@ -69,4 +69,5 @@ export class GuangxunCardComponent <T extends CardItem = CardItem> implements On
     );
   }
 
+  protected readonly CardStyle = CardStyle;
 }
