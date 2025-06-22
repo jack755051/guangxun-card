@@ -33,9 +33,12 @@ export class ContentComponent {
     this.tagClick.emit(tag);
   }
 
+  trackById = (_: number, t: CardItemTag) => t.id ?? t.label;
+
   @HostBinding('class')
   get hostClass(): string {
     const baseClass = CONTENT_CLASS_MAP[this.arrangeType] ?? '';
     return [baseClass, this.className].filter(Boolean).join(' ');
   }
+
 }

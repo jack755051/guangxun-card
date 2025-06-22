@@ -45,18 +45,18 @@ export interface CardItemFooter {
   button?: CardItemButton[];
 }
 
-export interface CardItemTag {
+export interface CardItemClickEvent {
   label: string;
   action: () => void;
   disabled?: boolean;
 }
 
-// 卡片項目按鈕
-export interface CardItemButton {
-  label: string;
-  action: () => void;
-  disabled?: boolean;
+export interface CardItemTag extends CardItemClickEvent{
+  id?: string
 }
+
+// 卡片項目按鈕
+export interface CardItemButton extends CardItemClickEvent{}
 
 // -----
 export interface ArrangeTypeMeta {

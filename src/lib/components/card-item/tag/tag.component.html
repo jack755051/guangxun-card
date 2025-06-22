@@ -1,4 +1,13 @@
-<div class="tag" (click)="onClick()">
-  <ng-content #content></ng-content>
-  <ng-container *ngIf="!hasCustomContent">{{ tag.label }}</ng-container>
-</div>
+<button
+  [ngClass]="[TAG_CLASS_MAP[arrangeType] || '', extraClass]"
+  class="guangxun-tag"
+  [disabled]="tag.disabled"
+  (click)="onClick()"
+>
+  <ng-content></ng-content>
+  <ng-container
+    *ngIf="!hasCustomContent"
+  >
+    {{ tag.label }}
+  </ng-container>
+</button>

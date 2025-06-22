@@ -9,7 +9,7 @@
   border: 1.5px solid $neon-900;
   color: $neon-900;
 
-  .tag {
+  .guangxun-tag {
     display: inline-flex;
     align-items: center;
     color: inherit;
@@ -20,12 +20,12 @@
     }
   }
 
-  &.tag-list-style .tag {
+  &.tag-list-style .guangxun-tag {
     @include default-text-style($font-size: 1.2rem, $color: $neon-900);
     @include container-padding($padding-x: 12px, $padding-y: 5px);
   }
 
-  &.tag-grid-style .tag {
+  &.tag-grid-style .guangxun-tag {
     @include default-text-style($font-size: 1rem, $color: $neon-900);
     @include container-padding($padding-x: 10px, $padding-y: 5px);
   }
