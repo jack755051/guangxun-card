@@ -1,7 +1,3 @@
-from pathlib import Path
-
-readme_content = """# @sanring/guangxun-card
-
 > 一套可高度配置的卡片布局组件（Angular Standalone + OnPush 支援泛型）
 
 [![npm version](https://img.shields.io/npm/v/@sanring/guangxun-card)](https://www.npmjs.com/package/@sanring/guangxun-card)
